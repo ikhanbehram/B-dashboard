@@ -1,18 +1,19 @@
-import react from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 
-const ProjectScreen = () => {
+function ProjectsScreen() {
     return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center"
-            }}
-        >
-            <Text>Project Screen</Text>
+        <View style={styles.container}>
+            <Text>Projects Screen</Text>
         </View>
     );
-};
+}
 
-export default ProjectScreen;
+export default ProjectsScreen;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    }
+});
