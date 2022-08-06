@@ -1,9 +1,25 @@
 import { StyleSheet, View, Button, TextInput, Modal, Image } from "react-native";
+import { launchImageLibrary } from "react-native-image-picker";
+// import SelectCreateable from "../SelectCreateable";
 
 function AddProjectModal({ isVisible, onCancel, onAddProject }) {
+    const launchImage = () => {
+        launchImageLibrary();
+    };
     return (
         <Modal visible={isVisible} animationType="slide">
             <View style={styles.inputContainer}>
+                <View style={styles.imageBtn}>
+                    <Button title="Select Image" onPress={launchImage} />
+                </View>
+                <TextInput style={styles.textInput} placeholder="Project Title" />
+                <TextInput style={styles.textInput} placeholder="Project Description" multiline numberOfLines={5} />
+                {/* <SelectCreateable /> */}
+
+                <TextInput style={styles.textInput} placeholder="Project Title" />
+                <TextInput style={styles.textInput} placeholder="Project Title" />
+                <TextInput style={styles.textInput} placeholder="Project Title" />
+                <TextInput style={styles.textInput} placeholder="Project Title" />
                 <TextInput style={styles.textInput} placeholder="Project Title" />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
@@ -33,7 +49,8 @@ const styles = StyleSheet.create({
         color: "#120438",
         borderRadius: 6,
         width: "100%",
-        padding: 12
+        padding: 12,
+        marginVertical: 8
     },
 
     buttonContainer: {
@@ -43,5 +60,9 @@ const styles = StyleSheet.create({
     button: {
         width: "40%",
         marginHorizontal: 35
+    },
+    imageBtn: {
+        alignSelf: "flex-start",
+        paddingBottom: 10
     }
 });
