@@ -1,17 +1,31 @@
+import { useState } from "react";
 import { StyleSheet, View, Button, TextInput, Modal, Image } from "react-native";
-import { launchImageLibrary } from "react-native-image-picker";
+import * as ImagePicker from "expo-image-picker";
 // import SelectCreateable from "../SelectCreateable";
 
 function AddProjectModal({ isVisible, onCancel, onAddProject }) {
-    const launchImage = () => {
-        launchImageLibrary();
+    const [image, setImage] = useState(null);
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1
+        });
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
     };
+
     return (
         <Modal visible={isVisible} animationType="slide">
             <View style={styles.inputContainer}>
                 <View style={styles.imageBtn}>
-                    <Button title="Select Image" onPress={launchImage} />
+                    <Button title="Select Image" onPress={pickImage} />
                 </View>
+                {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
                 <TextInput style={styles.textInput} placeholder="Project Title" />
                 <TextInput style={styles.textInput} placeholder="Project Description" multiline numberOfLines={5} />
                 {/* <SelectCreateable /> */}
