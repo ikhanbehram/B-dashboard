@@ -30,11 +30,8 @@ function AddProjectModal({ isVisible, onCancel, onAddProject }) {
                 <TextInput style={styles.textInput} placeholder="Project Description" multiline numberOfLines={5} />
                 {/* <SelectCreateable /> */}
 
-                <TextInput style={styles.textInput} placeholder="Project Title" />
-                <TextInput style={styles.textInput} placeholder="Project Title" />
-                <TextInput style={styles.textInput} placeholder="Project Title" />
-                <TextInput style={styles.textInput} placeholder="Project Title" />
-                <TextInput style={styles.textInput} placeholder="Project Title" />
+                <TextInput style={styles.textInput} placeholder="Live Demo Link" />
+                <TextInput style={styles.textInput} placeholder="Repo Link" />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
                         <Button title="Cancel" onPress={onCancel} color="#f31282" />
